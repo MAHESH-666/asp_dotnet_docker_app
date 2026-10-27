@@ -1,18 +1,35 @@
-# aspnet-docker
-Simple demo of ASP.NET Core and Docker using .NET Core 3.1 LTS.
+# ASP.NET Core + Docker Sample
 
-## Requirements
-In order to run this example, you'll need to have installed on your machine (Windows, Mac, Linux):
-* Docker Desktop (or Docker on Linux)
-* .NET Core SDK 3.1
+A small ASP.NET Core MVC sample packaged with a Dockerfile to demonstrate building and running a web application in a container.
 
-## Running
-The steps to run are:
-1. clone this tool: `git clone https://github.com/ashokitschool/asp_dotnet_docker_app` 
-2. cd into the folder: `cd asp_dotnet_docker_app`
-3. Build a docker image: `docker build . -t webapp`
-4. Run a container with: `docker run --rm -it -p 8080:80 -d webapp`
-5. Open your browser and navigate to: `localhost:8080`
+## Technology
 
-## Thanks!
-And don't forget to visit www.ashokitech.com
+- C#
+- ASP.NET Core / .NET Core 3.1 (as specified by the project file)
+- Docker
+
+> **Framework note:** .NET Core 3.1 is out of support. Treat this as a legacy learning sample and consider upgrading to a supported .NET release before using it for new or production work.
+
+## Prerequisites
+
+- Docker Desktop or Docker Engine
+- .NET SDK matching the project when building outside Docker
+
+## Run with Docker
+
+From the repository root:
+
+```bash
+docker build -t aspnet-docker-sample .
+docker run --rm -p 8080:80 aspnet-docker-sample
+```
+
+Then open http://localhost:8080. If the Dockerfile uses a different internal port, use the port declared in that file.
+
+## Run from Visual Studio
+
+Open the web project, restore NuGet packages, select the web project as startup, and run it with IIS Express or the configured launch profile.
+
+## Notes
+
+Check the Dockerfile and launch settings before running because port mappings vary by image configuration. Do not add credentials or environment-specific configuration to the image.
